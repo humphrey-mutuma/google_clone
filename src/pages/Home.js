@@ -1,8 +1,9 @@
-import React from 'react'
-import './Home.css'
-import { Link } from 'react-router-dom'
-import AppsIcon from '@material-ui/icons/Apps';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import React from "react";
+import "./Home.css";
+import { Link } from "react-router-dom";
+import AppsIcon from "@material-ui/icons/Apps";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import Search from "../components/Search";
 const Home = () => {
   return (
     <div className="home">
@@ -19,10 +20,16 @@ const Home = () => {
         </div>
       </div>
       <div className="home_body">
-        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="google image" />
+        <img
+          src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
+          alt="google image"
+        />
+        <div className="home_inputContainer">
+          <Search />
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
