@@ -1,23 +1,46 @@
-import './Search.css'
+import { useState } from "react";
+import "./Search.css";
 
-import SearchIcon from '@material-ui/icons/Search';
+import SearchIcon from "@material-ui/icons/Search";
 import MicIcon from "@material-ui/icons/Mic";
-import { Button } from '@material-ui/core';
+import { Button } from "@material-ui/core";
+import { useHistory } from "react-router";
 
-const Search = () => {
+const Search = ({ hideButtons = false }) => {
+  const [input, setInput] = useState("");
+  const history = useHistory();
+
+  const search = (e) => {
+    e.preventDefault();
+    console.log("you hit search", input);
+
+    history.push("/search");
+  };
+
   return (
-    <div className="search">
+    <form className="search">
       <div className="search_input">
         <SearchIcon className="search_inputIcon" />
-        <input />
+        <input value={input} onChange={(e) => setInput(e.target.value)} />
         <MicIcon />
       </div>
-      <div className="search_buttons">
-        <Button onClick={search} variant="outlined">Google Search</Button>
-        <Button variant="outlined">I'm Feeling Licky</Button>
-      </div>
-    </div>
+      {!hideButtons ? (
+        <div className="search_buttons">
+          <Button type="submit" onClick={search} variant="outlined">
+            Google Search
+          </Button>
+          <Button variant="outlined">I'm Feeling Licky</Button>
+        </div>
+      ) : (
+        <div className="search_buttons">
+          <Button className="search_buttonsHidden" type="submit" onClick={search} variant="outlined">
+            Google Search
+          </Button >
+          <Button className="search_buttonsHidden" variant="outlined">I'm Feeling Licky</Button>
+        </div>
+      )}
+    </form>
   );
-}
+};
 
-export default Search
+export default Search;

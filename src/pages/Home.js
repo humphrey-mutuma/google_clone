@@ -25,7 +25,7 @@ const Home = () => {
           alt="google image"
         />
         <div className="home_inputContainer">
-          <Search />
+          <Search  />
         </div>
       </div>
     </div>
